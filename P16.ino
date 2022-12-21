@@ -177,3 +177,74 @@ xa que so hai cambios no cableado
 https://www.tinkercad.com/things/3syhajxpI79?sharecode=9vTS_sGVWmuuDjdyvjZ71PGCJckoS7kbZ-XxVRzgRPE
 **/
 //NOTA IMPORTANTE NAS FUTURAS MONTAXES UTILIZAR PROTOBOARD GRANDE
+/*** Outra observación a ter en conta e que dependendo da secuencia na que de a orde de rego o 
+led multicor acende dunha cor ou doutra detalle sen importancia pero que no caso de
+querer sinalizar cunha cor determinada hay que ter en conta porque sucede
+***/
+// C++ code
+//
+int A = 0;
+
+int B = 0;
+
+int C = 0;
+
+void setup()
+{
+  pinMode(10, INPUT);
+  pinMode(9, INPUT);
+  pinMode(8, INPUT);
+  pinMode(12, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  Serial.begin(9600);
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+/**** 
+comprovado, modificando os bloques e texto pare cada vez que unha saida 
+esté activa as outras estivesen desactivadas o led multicor non varía
+dependendo da orde na que prema cada un dos pulsadores co que agora si que 
+ilumina cada saída cunha soa cor e sempre a mesma
+****/
+void loop()
+{
+  A = digitalRead(10);
+  B = digitalRead(9);
+  C = digitalRead(8);
+  if (((!(A == HIGH)) && B == HIGH) && (!(C == HIGH))) {
+    digitalWrite(12, HIGH);
+    digitalWrite(7, HIGH);
+    digitalWrite(5, LOW);
+    digitalWrite(6, LOW);
+    delay(2000); // Wait for 2000 millisecond(s)
+    Serial.print(" rego 1");
+  } else {
+    if ((A == HIGH && B == HIGH) && (!(C == HIGH))) {
+      digitalWrite(12, HIGH);
+      digitalWrite(6, HIGH);
+      digitalWrite(5, LOW);
+      digitalWrite(7, LOW);
+      delay(2000); // Wait for 2000 millisecond(s)
+      Serial.print(" rego 2");
+    } else {
+      if ((A == HIGH && B == HIGH) && C == HIGH) {
+        digitalWrite(12, HIGH);
+        digitalWrite(5, HIGH);
+        digitalWrite(6, LOW);
+        digitalWrite(7, LOW);
+        delay(2000); // Wait for 2000 millisecond(s)
+        Serial.print(" rego 3");
+      } else {
+        digitalWrite(12, LOW);
+        digitalWrite(7, LOW);
+        digitalWrite(6, LOW);
+        digitalWrite(5, LOW);
+        digitalWrite(LED_BUILTIN, HIGH);
+        delay(4000); // Wait for 4000 millisecond(s)
+        Serial.println("non fai falla regar");
+      }
+    }
+  }
+}
+/*changed*/
