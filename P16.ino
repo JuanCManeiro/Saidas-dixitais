@@ -170,3 +170,10 @@ void loop()
 }
 /*cambio feito*/
 // agora tentarei introducir un rele na montaxe que active o motor do rego
+/**
+Enlace da nova montaxe con un rele pola que pasa a corrente e que activara o motor do rego 
+despois de observar o texto e os bloques a programación non cambiou 
+xa que so hai cambios no cableado
+https://www.tinkercad.com/things/3syhajxpI79?sharecode=9vTS_sGVWmuuDjdyvjZ71PGCJckoS7kbZ-XxVRzgRPE
+**/
+//NOTA IMPORTANTE NAS FUTURAS MONTAXES UTILIZAR PROTOBOARD GRANDE
